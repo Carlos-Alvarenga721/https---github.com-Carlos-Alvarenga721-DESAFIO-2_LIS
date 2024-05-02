@@ -1,4 +1,25 @@
 <?php
+
+//Expresiones Regulares
+$regex_autor = "/^((VARIOS AUTORES)|(AUTORES VARIOS)|([A-ZÁÉÍÓÚÑÜ][a-záéíóúñü]+(?:,\s[A-ZÁÉÍÓÚÑÜ][a-záéíóúñü]+)+))$/";
+
+$regex_titulo = "/^[A-ZÁÉÍÓÚÑÜ][a-záéíóúñü]+(\s[A-ZÁÉÍÓÚÑÜ][a-záéíóúñü]+)*$/";
+
+$regex_num_edicion = "/^\d+([ªº]|[a-z]+)?$/";
+
+$regex_lugar_publicacion = "/^[a-zA-ZáéíóúñÁÉÍÓÚÑ\s]+$/";
+
+$regex_editorial = "/^[a-zA-ZáéíóúñÁÉÍÓÚÑ\s]+$/";
+
+$regex_anio = "/^\(\d{4}\)$/";
+
+$regex_num_paginas = "/^\d+$/";
+
+$regex_notas = "/^(\s*\S+\s*){1,200}$/";
+
+$regex_isbn = "/^\d{3}-\d{2}-\d{4}-\d{3}-\d$/";
+
+
 class Libro {
     //Propiedades / Fields
     private $autor;
@@ -87,10 +108,65 @@ if (!isset($_SESSION['libros'])) {
     $paginas = $_POST["paginas"];
     $notas = $_POST["notas"];
     $isbn = $_POST["isbn"];
-    
+
+    //Manejo de errores
+    // Array para almacenar los errores
+    $errores = [];
+
+    // Validación de los campos
+    if (!preg_match($regex_autor, $autor)) {
+        $errores[] = "Formato incorrecto. Ejemplo válido: Apellido1, Nombre1, Apellido2, Nombre2";
+    }
+
+    if (!preg_match($regex_titulo, $titulo)) {
+        $errores[] = "No se aceptan las comillas en los titulos de libros";
+    }
+
+    if (!preg_match($regex_num_edicion, $edicion)) {
+        $errores[] = "solo se permiten caraceteres superindices.";
+    }
+
+    if (!preg_match($regex_lugar_publicacion, $lugar)) {
+        $errores[] = "No se aceptan numeros como nombres de lugares";
+    }
+
+    if (!preg_match($regex_editorial, $editorial)) {
+        $errores[] = "No hay restricciones de formato";
+    }
+
+    if (!preg_match($regex_anio, $anio)) {
+        $errores[] = "Formato incorrecto. El año debe de ir entre parentesis. Ejemplo válido: (2024)";
+    }
+
+    if (!preg_match($regex_num_paginas, $paginas)) {
+        $errores[] = "No se aceptan letras ni numeros decimales, solo numeros enteros para el numero de paginas";
+    }
+
+    if (!preg_match($regex_notas, $notas)) {
+        $errores[] = "No hay restricciones de formato";
+    }
+
+    if (!preg_match($regex_isbn, $isbn)) {
+        $errores[] = "El formato correcto para el ISBN es (XXX-XX-XXXX-XXX-X), incluyendo el guion de separacion";
+    }
+
+    // Si hay errores, redirigir al archivo error.php
+    if (!empty($errores)) {
+        
+        $_SESSION['errores'] = $errores;
+        header("Location: error.php");
+        exit;
+
+        require 'error.php';
+        
+        function crear_errores(){
+
+        }
+    }
+    else{
     $libro = new Libro($autor, $titulo, $edicion, $lugar, $editorial, $anio, $paginas, $notas, $isbn);
     $_SESSION['libros'][] = $libro;
     
     header('Location: mostrar.php');
-
+    }
 ?>
