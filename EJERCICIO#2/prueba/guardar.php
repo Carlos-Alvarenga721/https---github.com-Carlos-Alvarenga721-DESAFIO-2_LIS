@@ -5,7 +5,7 @@ $regex_autor = "/^((VARIOS AUTORES)|(AUTORES VARIOS)|([A-ZÁÉÍÓÚÑÜ][a-zá�
 
 $regex_titulo = "/^[A-ZÁÉÍÓÚÑÜ][a-záéíóúñü]+(\s[A-ZÁÉÍÓÚÑÜ][a-záéíóúñü]+)*$/";
 
-$regex_num_edicion = "/^\d+([ªº]|[a-z]+)?$/";
+$regex_num_edicion = "/^\d+(ª|º)+$/";
 
 $regex_lugar_publicacion = "/^[a-zA-ZáéíóúñÁÉÍÓÚÑ\s]+$/";
 
