@@ -123,7 +123,7 @@ if (!isset($_SESSION['libros'])) {
     }
 
     if (!preg_match($regex_num_edicion, $edicion)) {
-        $errores[] = "solo se permiten caraceteres superindices.";
+        $errores[] = "solo se permiten caraceteres superindices. Ejemplo valido: 1ª o 2º";
     }
 
     if (!preg_match($regex_lugar_publicacion, $lugar)) {
