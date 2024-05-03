@@ -16,14 +16,14 @@ if (isset($_SESSION['form_data'])) {
     $form_data = $_SESSION['form_data'];
     $autor = htmlspecialchars($form_data['autor'] ?? '');
     $titulo = htmlspecialchars($form_data['titulo'] ?? '');
-    $titulo = htmlspecialchars($form_data['edicion'] ?? '');
-    $titulo = htmlspecialchars($form_data['lugar'] ?? '');
-    $titulo = htmlspecialchars($form_data['editorial'] ?? '');
-    $titulo = htmlspecialchars($form_data['anio'] ?? '');
-    $titulo = htmlspecialchars($form_data['paginas'] ?? '');
-    $titulo = htmlspecialchars($form_data['notas'] ?? '');
-    $titulo = htmlspecialchars($form_data['isbn'] ?? '');
-
+    $edicion = htmlspecialchars($form_data['edicion'] ?? '');
+    $lugar = htmlspecialchars($form_data['lugar'] ?? '');
+    $editorial = htmlspecialchars($form_data['editorial'] ?? '');
+    $anio = htmlspecialchars($form_data['anio'] ?? '');
+    $paginas = htmlspecialchars($form_data['paginas'] ?? '');
+    $notas = htmlspecialchars($form_data['notas'] ?? '');
+    $isbn = htmlspecialchars($form_data['isbn'] ?? '');
+    
     unset($_SESSION['form_data']); // Limpiar los datos del formulario
 }
 ?>
