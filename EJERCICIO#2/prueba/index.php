@@ -74,8 +74,8 @@ if (isset($_SESSION['form_data'])) {
         </div>
         <div class="mb-3">
             <label for="notas" class="form-label">Notas</label>
-            <textarea class="form-control" id="notas" name="notas" rows="3" value="<<?= $notas ?>" required></textarea>
-        </div>
+            <textarea class="form-control" id="notas" name="notas" rows="3" value="<?= $notas ?>" required></textarea>
+        </div>.
         <div class="mb-3">
             <label for="isbn" class="form-label">ISBN</label>
             <input type="text" class="form-control" id="isbn" name="isbn" value="<?= $isbn ?>" required>
