@@ -152,8 +152,8 @@ if (!isset($_SESSION['libros'])) {
 
     // Si hay errores, redirigir al archivo error.php
     if (!empty($errores)) {
-        $_SESSION['form_data'] = $_POST; //guardo los datos en el caso existan errores
         $_SESSION['errores'] = $errores;
+        $_SESSION['form_data'] = $_POST; //guardo los datos en el caso existan errores
         header("Location: error.php");
         exit;
 

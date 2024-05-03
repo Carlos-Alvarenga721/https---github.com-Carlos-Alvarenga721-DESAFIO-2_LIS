@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error en los datos ingresados</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<title>Error en los datos ingresados</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -27,13 +27,14 @@
             $errores = $_SESSION['errores'];
             
             foreach ($errores as $error) {
-                echo '<li><h5 class="text-info">$error<h5></li>';
+                echo '<li><h5 class="text-info">'.$error;
+                echo '</h5></li>';
             }
            
             // Limpiar los errores después de mostrarlos
             unset($_SESSION['errores']);
         } else {
-            echo '<li>No se encontraron errores.</li>';
+            echo '<li><h5 class="text-info">No se encontraron errores.<h5></li>';
         }
         ?>
     </ul>
